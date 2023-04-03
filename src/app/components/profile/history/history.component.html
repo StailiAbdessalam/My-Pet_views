@@ -1,0 +1,168 @@
+<div class="min-h-full">
+  <main class="py-10">
+    <!-- Page header -->
+    <div
+      class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8"
+    >
+      <div class="flex items-center space-x-5">
+        <div class="flex-shrink-0">
+          <div class="relative">
+            <span
+              class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-700"
+            >
+              <span
+                class="text-3xl font-medium leading-none text-gray-100 uppercase"
+              >
+                {{ person.firstName && person!.firstName.charAt(0)
+                }}{{ person.lastName && person!.lastName.charAt(0) }}
+              </span>
+            </span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-2xl mb-2 font-bold text-gray-900">
+            {{ person.firstName }} {{ person.lastName }}
+          </h1>
+          <div class="flex flex-col gap-2">
+            <p class="text-sm font-medium text-gray-500">
+              <a href="#" class="flex text-gray-600">
+                <svg
+                  class="-ml-1 mr-2 h-5 w-5 text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                {{ person.phone }}
+              </a>
+            </p>
+
+            <p class="text-sm font-medium text-gray-500">
+              <a href="#" class="flex text-gray-600">
+                <svg
+                  class="-ml-1 mr-2 h-5 w-5 text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+                  />
+                  <path
+                    d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+                  />
+                </svg>
+                {{ person.email }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3"
+      >
+        <a
+          routerLink="/profile"
+          class="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+        >
+          Edit Section
+        </a>
+        <a
+          routerLink="/profile/history"
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+        >
+          Adoption History
+        </a>
+      </div>
+    </div>
+
+    <div class="mx-auto px-4 pt-16 pb-20 grid max-w-lg gap-5 lg:max-w-none lg:grid-cols-3">
+      <div
+        *ngFor="let adoption of adoptions"
+        class="flex flex-col overflow-hidden rounded-lg shadow-lg"
+      >
+        <div class="flex-shrink-0">
+          <img
+            class="h-48 w-full object-cover"
+            [src]="adoption.post.animal.picture"
+            alt=""
+          />
+        </div>
+        <div class="flex flex-1 flex-col justify-between bg-white p-6">
+          <div class="flex-1">
+            <div class="flex align-middle justify-between w-full">
+              <p
+                class="text-sm flex flex-col justify-center font-medium text-indigo-600"
+              >
+                <span>{{ adoption.post.animal.type }}</span>
+                <span class="text-gray-900"
+                  >Pet Name: {{ adoption.post.animal.name }}</span
+                >
+                <span class="text-gray-900"
+                  >Adoption Duration: {{ adoption.post.days }} Day</span
+                >
+              </p>
+            </div>
+            <div class="mt-2 block">
+              <p class="text-xl font-semibold text-gray-900">
+                {{ adoption.post.title }}
+              </p>
+              <p class="mt-3 text-base text-gray-500">
+                {{ adoption.post.description }}
+              </p>
+            </div>
+          </div>
+          <div class="mt-6 flex items-center">
+            <div class="flex-shrink-0">
+              <p>
+                <span class="sr-only">{{
+                  adoption.person.firstName +
+                    " " +
+                    adoption.person.lastName
+                }}</span>
+                <span
+                  class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-700"
+                >
+                  <span
+                    class="text-md font-medium leading-none text-gray-100 uppercase"
+                    >{{
+                      adoption.person.firstName[0] +
+                        adoption.person.lastName[0]
+                    }}</span
+                  >
+                </span>
+              </p>
+            </div>
+            <div class="ml-3">
+              <p class="text-sm font-medium text-gray-900 hover:underline">
+                {{
+                  adoption.person.firstName +
+                    " " +
+                    adoption.person.lastName
+                }}
+              </p>
+              <div class="flex space-x-1 text-sm text-gray-500">
+                <time datetime="2020-03-16">{{
+                  adoption.person.email
+                }}</time>
+                <span aria-hidden="true">&middot;</span>
+              </div>
+            </div>
+            <div
+              class="w-fit ml-auto rounded-md border border-transparent bg-green-600 px-4 py-2 text-sm font-medium text-white shadow-sm focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100"
+            >
+              <p>Adopted</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

@@ -1,0 +1,313 @@
+<div
+  *ngIf="loading"
+  id="alert-4"
+  class="w-18 p-2 rounded-lg fixed top-44 bg-black text-white right-4 flex justify-end items-center"
+  role="alert"
+>
+  <div role="status">
+    <svg
+      aria-hidden="true"
+      class="w-4 h-4 text-gray-200 animate-spin dark:text-gray-600 fill-white"
+      viewBox="0 0 100 101"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+        fill="currentColor"
+      />
+      <path
+        d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+        fill="currentFill"
+      />
+    </svg>
+    <span class="sr-only">Loading...</span>
+  </div>
+  <div class="ml-3 text-sm font-medium text-white">Loding</div>
+</div>
+
+<div
+  *ngIf="messageAlert != ''"
+  class="fixed z-50 top-10 right-0 flex justify-end mt-2 mr-2 w-auto"
+>
+  <div id="alert-4" [class]="alertStyle.bg" role="alert">
+    <svg
+      aria-hidden="true"
+      [class]="alertStyle.svgstyle"
+      fill="currentColor"
+      viewBox="0 0 20 20"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"
+        clip-rule="evenodd"
+      ></path>
+    </svg>
+    <span class="sr-only">Info</span>
+    <div [class]="alertStyle.message">
+      {{ messageAlert }}
+    </div>
+    <button
+      (click)="messageAlert = ''"
+      type="button"
+      [class]="alertStyle.button"
+      data-dismiss-target="#alert-4"
+      aria-label="Close"
+    >
+      <span class="sr-only">Close</span>
+      <svg
+        aria-hidden="true"
+        class="w-5 h-5"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+          clip-rule="evenodd"
+        ></path>
+      </svg>
+    </button>
+  </div>
+</div>
+
+<div class="min-h-full">
+  <main class="py-10">
+    <!-- Page header -->
+    <div
+      class="mx-auto max-w-3xl px-4 sm:px-6 md:flex md:items-center md:justify-between md:space-x-5 lg:max-w-7xl lg:px-8"
+    >
+      <div class="flex items-center space-x-5">
+        <div class="flex-shrink-0">
+          <div class="relative">
+            <span
+              class="inline-flex h-20 w-20 items-center justify-center rounded-full bg-gray-700"
+            >
+              <span
+                class="text-3xl font-medium leading-none text-gray-100 uppercase"
+              >
+              {{ person?.firstName && person!.firstName.charAt(0) }}{{ person?.lastName && person!.lastName.charAt(0) }}
+            </span>
+            </span>
+          </div>
+        </div>
+        <div>
+          <h1 class="text-2xl mb-2 font-bold text-gray-900">
+            {{ person?.firstName }} {{ person?.lastName }}
+        </h1>
+          <div class="flex flex-col gap-2">
+            <p class="text-sm font-medium text-gray-500">
+              <a href="#" class="flex text-gray-600">
+                <svg
+                  class="-ml-1 mr-2 h-5 w-5 text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M2 3.5A1.5 1.5 0 013.5 2h1.148a1.5 1.5 0 011.465 1.175l.716 3.223a1.5 1.5 0 01-1.052 1.767l-.933.267c-.41.117-.643.555-.48.95a11.542 11.542 0 006.254 6.254c.395.163.833-.07.95-.48l.267-.933a1.5 1.5 0 011.767-1.052l3.223.716A1.5 1.5 0 0118 15.352V16.5a1.5 1.5 0 01-1.5 1.5H15c-1.149 0-2.263-.15-3.326-.43A13.022 13.022 0 012.43 8.326 13.019 13.019 0 012 5V3.5z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+                {{ person?.phone }}
+              </a>
+            </p>
+
+            <p class="text-sm font-medium text-gray-500">
+              <a href="#" class="flex text-gray-600">
+                <svg
+                  class="-ml-1 mr-2 h-5 w-5 text-gray-600"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 20 20"
+                  fill="currentColor"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M3 4a2 2 0 00-2 2v1.161l8.441 4.221a1.25 1.25 0 001.118 0L19 7.162V6a2 2 0 00-2-2H3z"
+                  />
+                  <path
+                    d="M19 8.839l-7.77 3.885a2.75 2.75 0 01-2.46 0L1 8.839V14a2 2 0 002 2h14a2 2 0 002-2V8.839z"
+                  />
+                </svg>
+                {{ person?.email }}
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      <div
+        class="justify-stretch mt-6 flex flex-col-reverse space-y-4 space-y-reverse sm:flex-row-reverse sm:justify-end sm:space-y-0 sm:space-x-3 sm:space-x-reverse md:mt-0 md:flex-row md:space-x-3"
+      >
+        <a
+          routerLink="/profile"
+          class="inline-flex items-center justify-center rounded-md border border-gray-300 px-4 py-2 text-sm font-medium text-gray-700 shadow-sm bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+        >
+          Edit Section
+        </a>
+        <a
+          routerLink="/profile/history"
+          class="inline-flex items-center justify-center rounded-md border border-transparent bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+        >
+          Adoption History
+        </a>
+      </div>
+    </div>
+
+    <form
+      [formGroup]="editForm"
+      (ngSubmit)="submitEdit()"
+      class="space-y-5 mt-10"
+      action="#"
+      method="POST"
+    >
+      <div class="bg-gray-200 px-4 py-5 shadow sm:rounded-lg sm:p-6">
+        <div class="md:grid md:grid-cols-3 md:gap-6">
+          <div class="md:col-span-1">
+            <h3 class="text-lg font-medium leading-6 text-gray-900">
+              Personal Information
+            </h3>
+            <p class="mt-1 text-sm text-gray-500">
+              Use a permanent address where you can receive mail.
+            </p>
+          </div>
+          <div class="mt-5 md:col-span-2 md:mt-0">
+            <div class="grid grid-cols-6 gap-6">
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="firstName"
+                  class="block text-sm font-medium text-gray-700"
+                  >First name</label
+                >
+                <input
+                  [ngClass]="{
+                    'border-red-500':
+                      firstName && firstName.invalid && firstName.touched
+                  }"
+                  formControlName="firstName"
+                  type="text"
+                  name="firstName"
+                  id="firstName"
+                  autocomplete="First Name"
+                  class="mt-1 block w-full py-3 px-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="last-name"
+                  class="block text-sm font-medium text-gray-700"
+                  >Last name</label
+                >
+                <input
+                [ngClass]="{
+                    'border-red-500':
+                    lastName && lastName.invalid && lastName.touched
+                  }"
+                  formControlName="lastName"
+                  type="text"
+                  name="lastName"
+                  id="lastName"
+                  autocomplete="Last Name"
+                  class="mt-1 block w-full py-3 px-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-4">
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700"
+                  >Phone Number</label
+                >
+                <input
+                [ngClass]="{
+                    'border-red-500':
+                    phone && phone.invalid && phone.touched
+                  }"
+                  formControlName="phone"
+                  type="text"
+                  name="phone"
+                  id="phone"
+                  autocomplete="phone"
+                  class="mt-1 block w-full py-3 px-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="password"
+                  class="block text-sm font-medium text-gray-700"
+                  >Password</label
+                >
+                <input
+                [ngClass]="{
+                    'border-red-500 text-3xl':
+                    password && password.invalid && password.touched
+                  }"
+                  formControlName="password"
+                  type="text"
+                  name="password"
+                  id="password"
+                  placeholder="**********"
+                  class="mt-1 block w-full py-3 px-2 rounded-md  sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-3">
+                <label
+                  for="city"
+                  class="block text-sm font-medium text-gray-700"
+                  >City</label
+                >
+                <input
+                [ngClass]="{
+                    'border-red-500':
+                    city && city.invalid && city.touched
+                  }"
+                  formControlName="city"
+                  type="text"
+                  name="city"
+                  id="city"
+                  autocomplete="city"
+                  class="mt-1 block w-full py-3 px-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+
+              <div class="col-span-6 sm:col-span-4">
+                <label
+                  for="phone"
+                  class="block text-sm font-medium text-gray-700"
+                  >Your Address</label
+                >
+                <input
+                [ngClass]="{
+                    'border-red-500':
+                    address && address.invalid && address.touched
+                  }"
+                  formControlName="address"
+                  type="text"
+                  name="address"
+                  id="address"
+                  autocomplete="Address"
+                  class="mt-1 block w-full py-3 px-2 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="ml-3 inline-flex justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+        >
+          Update Profile
+        </button>
+      </div>
+    </form>
+  </main>
+</div>
